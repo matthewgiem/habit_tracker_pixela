@@ -9,8 +9,10 @@ user_params = {
     "token": TOKEN,
     "username": USERNAME,
     "agreeTermsOfService": "yes",
-    "notMinor":"yes"
+    "notMinor": "yes"
 }
 
-response = requests.post(url=pixela_endpoint, json=user_params)
-print(response.text)
+
+def create_new_user():
+    response = requests.post(url=pixela_endpoint, json=user_params)
+    print(response.text)
