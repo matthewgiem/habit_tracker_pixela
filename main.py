@@ -1,10 +1,13 @@
 import requests
+from tokens import TOKEN, USERNAME
 
 pixela_endpoint = "https://pixe.la/v1/users"
+USERNAME = USERNAME
+TOKEN = TOKEN
 
 user_params = {
-    "token": "visker-nEnmu9-qyjcav",
-    "username": "matthewgiem",
+    "token": TOKEN,
+    "username": USERNAME,
     "agreeTermsOfService": "yes",
     "notMinor":"yes"
 }
