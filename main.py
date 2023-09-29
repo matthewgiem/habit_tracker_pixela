@@ -28,6 +28,7 @@ graph_config = {
 pixela_endpoint = "https://pixe.la/v1/users"
 graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
 pages_read_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPHID}"
+update_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPHID}"
 
 
 def create_new_user():
@@ -48,3 +49,14 @@ def add_pages_read(num):
     }
     response = requests.post(url=pages_read_endpoint, json=add_pages, headers=header)
     print(response.text)
+
+def update_todays_pages_read(num):
+    today = date.today()
+    change_pages ={
+        "quantity": str(num)
+    }
+    update_url = pages_read_endpoint + f"/{today.year}{today.month:02d}{today.day:02d}"
+    response = requests.put(url=update_url, json=change_pages, headers=header)
+    print(response.text)
+
+update_todays_pages_read(0)
