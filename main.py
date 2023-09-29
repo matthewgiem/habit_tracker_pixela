@@ -50,13 +50,24 @@ def add_pages_read(num):
     response = requests.post(url=pages_read_endpoint, json=add_pages, headers=header)
     print(response.text)
 
+
 def update_todays_pages_read(num):
     today = date.today()
-    change_pages ={
+    change_pages = {
         "quantity": str(num)
     }
     update_url = pages_read_endpoint + f"/{today.year}{today.month:02d}{today.day:02d}"
     response = requests.put(url=update_url, json=change_pages, headers=header)
     print(response.text)
 
-update_todays_pages_read(0)
+
+def update_pages_read(num, change_date):
+    change_pages = {
+        "quantity": str(num)
+    }
+    update_url = pages_read_endpoint + f"/{change_date}"
+    response = requests.put(url=update_url, json=change_pages, headers=header)
+    print(response.text)
+
+
+update_pages_read(0, "20230928")
