@@ -70,4 +70,8 @@ def update_pages_read(num, change_date):
     print(response.text)
 
 
-update_pages_read(0, "20230928")
+def delete_pixel(delete_date):
+    delete_url = pages_read_endpoint + f"/{delete_date}"
+    response = requests.delete(url=delete_url, headers=header)
+    print(response.text)
+
